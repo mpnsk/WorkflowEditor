@@ -11,14 +11,14 @@ public interface PlaceOrTransition {
         final DragContext dragContext = new DragContext();
         final Group wrapGroup = new Group(node);
 
-        wrapGroup.addEventFilter(
-                MouseEvent.ANY,
-                mouseEvent -> {
-                    if (draggable) {
-                        // disable mouse events for all children
-                        mouseEvent.consume();
-                    }
-                });
+//        wrapGroup.addEventFilter(
+//                MouseEvent.ANY,
+//                mouseEvent -> {
+//                    if (draggable) {
+//                         disable mouse events for all children
+//                        mouseEvent.consume();
+//                    }
+//                });
 
         wrapGroup.addEventFilter(
                 MouseEvent.MOUSE_PRESSED,
