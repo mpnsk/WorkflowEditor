@@ -1,14 +1,12 @@
 package com.paunoski.workfloweditor.editarea;
 
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 
 public class EditArea {
@@ -23,18 +21,23 @@ public class EditArea {
         rectangle.setFill(Color.RED);
         rectangle.setHeight(30);
         rectangle.setWidth(30);
-
-        Node node =  makeDraggable(rectangle);
+        Node node = makeDraggable(rectangle);
 
 
         Rectangle rectangle2 = new Rectangle();
         rectangle2.setFill(Color.BLUE);
         rectangle2.setHeight(35);
         rectangle2.setWidth(25);
-        rectangle2.relocate(50, 0);
+        rectangle2.relocate(50, 20);
+        Node node2 = makeDraggable(rectangle2);
 
-        Node node2 =  makeDraggable(rectangle2);
-        root.getChildren().addAll(node, node2);
+        Line line = new Line();
+        line.startXProperty().bind(rectangle.layoutXProperty().add(rectangle.translateXProperty().add(rectangle.getWidth())));
+        line.startYProperty().bind(rectangle.layoutYProperty().add(rectangle.translateYProperty().add(rectangle.getHeight() / 2)));
+        line.endXProperty().bind(rectangle2.layoutXProperty().add(rectangle2.translateXProperty()));
+        line.endYProperty().bind(rectangle2.layoutYProperty().add(rectangle2.translateYProperty().add(rectangle2.getHeight() / 2)));
+
+        root.getChildren().addAll(node, node2, line);
     }
 
     private Node makeDraggable(final Node node) {
