@@ -3,6 +3,7 @@ package com.paunoski.workfloweditor.editarea;
 import com.paunoski.workfloweditor.Place;
 import com.paunoski.workfloweditor.Transition;
 import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.input.MouseButton;
@@ -26,6 +27,7 @@ public class EditArea {
         Node draggableTransition = transition.makeDraggable(transition);
 
 
+        EventType<MouseEvent> mouseClicked = MouseEvent.MOUSE_CLICKED;
         EventHandler<MouseEvent> startDragging = click -> {
             if (click.getButton().equals(MouseButton.PRIMARY)
 //                    && click.getClickCount() == 2)
@@ -34,27 +36,30 @@ public class EditArea {
                 Line mouseLine = new Line();
                 mouseLine.startXProperty().bind(place.layoutXProperty().add(place.translateXProperty()));
                 mouseLine.startYProperty().bind(place.layoutYProperty().add(place.translateYProperty()));
-                mouseLine.setEndX(click.getSceneX());
-                mouseLine.setEndY(click.getSceneY());
                 root.getChildren().add(mouseLine);
                 EventHandler<MouseEvent> traceMouse = move -> {
                     mouseLine.setEndX(move.getSceneX());
                     mouseLine.setEndY(move.getSceneY());
                 };
                 root.setOnMouseMoved(traceMouse);
-                System.out.println("setting up click listener");
-                transition.setOnMouseClicked(event -> {
-                    if (event.getButton().equals(MouseButton.PRIMARY)) {
-                        System.out.println(event.getClickCount());
-                        root.setOnMouseMoved(null);
-                        mouseLine.endXProperty().bind(transition.layoutXProperty().add(transition.translateXProperty()));
-                        mouseLine.endYProperty().bind(transition.layoutYProperty().add(transition.translateYProperty()));
-                    }
+                transition.setOnMouseEntered(event -> {
+                    root.setOnMouseMoved(null);
+                    mouseLine.endXProperty().bind(transition.layoutXProperty().add(transition.translateXProperty()));
+                    mouseLine.endYProperty().bind(transition.layoutYProperty().add(transition.translateYProperty()).add(transition.heightProperty().divide(2)));
+                });
+                transition.setOnMouseExited(event -> {
+                    mouseLine.endXProperty().unbind();
+                    mouseLine.endYProperty().unbind();
+                    root.setOnMouseMoved(traceMouse);
                 });
             }
 
         };
-        place.addEventHandler(MouseEvent.MOUSE_CLICKED, startDragging);
+//        EventHandler<MouseEvent> stickToEdge = event -> {
+//            event.
+//        };
+        Runnable stopDragging = EventHandlerRegistration.add(place, mouseClicked, startDragging);
+        place.addEventHandler(mouseClicked, startDragging);
 
         root.getChildren().addAll(draggablePlace, draggableTransition);
     }
