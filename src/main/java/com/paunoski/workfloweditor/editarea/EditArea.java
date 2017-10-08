@@ -55,9 +55,6 @@ public class EditArea {
             }
 
         };
-//        EventHandler<MouseEvent> stickToEdge = event -> {
-//            event.
-//        };
         Runnable stopDragging = EventHandlerRegistration.add(place, mouseClicked, startDragging);
         place.addEventHandler(mouseClicked, startDragging);
 
