@@ -1,7 +1,7 @@
-package com.paunoski.workfloweditor.editarea;
+package com.paunoski.workfloweditor.editarea.events;
 
-import com.paunoski.workfloweditor.Place;
-import com.paunoski.workfloweditor.Transition;
+import com.paunoski.workfloweditor.editarea.elements.Place;
+import com.paunoski.workfloweditor.editarea.elements.Transition;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;

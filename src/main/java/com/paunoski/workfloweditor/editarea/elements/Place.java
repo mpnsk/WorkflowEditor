@@ -1,4 +1,4 @@
-package com.paunoski.workfloweditor;
+package com.paunoski.workfloweditor.editarea.elements;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.scene.input.MouseButton;
@@ -7,7 +7,7 @@ import javafx.scene.shape.Line;
 
 import java.util.Set;
 
-public class Place extends Circle implements PlaceOrTransition, MyShape {
+public class Place extends Circle implements Dragable, MyShape {
     int tokens;
     Set<Transition> transitions;
 

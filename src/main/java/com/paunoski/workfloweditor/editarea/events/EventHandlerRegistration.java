@@ -1,4 +1,4 @@
-package com.paunoski.workfloweditor.editarea;
+package com.paunoski.workfloweditor.editarea.events;
 
 import javafx.event.Event;
 import javafx.event.EventHandler;

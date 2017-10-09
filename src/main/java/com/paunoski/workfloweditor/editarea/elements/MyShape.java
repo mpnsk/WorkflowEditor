@@ -1,4 +1,4 @@
-package com.paunoski.workfloweditor;
+package com.paunoski.workfloweditor.editarea.elements;
 
 import javafx.beans.property.DoubleProperty;
 

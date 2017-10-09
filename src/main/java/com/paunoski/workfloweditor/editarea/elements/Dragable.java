@@ -1,10 +1,10 @@
-package com.paunoski.workfloweditor;
+package com.paunoski.workfloweditor.editarea.elements;
 
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 
-public interface PlaceOrTransition {
+public interface Dragable {
     boolean draggable = true;
 
     default Node makeDraggable(Node node) {

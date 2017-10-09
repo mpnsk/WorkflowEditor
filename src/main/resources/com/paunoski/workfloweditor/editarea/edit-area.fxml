@@ -3,7 +3,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.paunoski.workfloweditor.editarea.EditArea"
+            fx:controller="com.paunoski.workfloweditor.editarea.events.EditArea"
             fx:id="root"
             prefHeight="400.0" prefWidth="600.0">
 

@@ -1,13 +1,11 @@
-package com.paunoski.workfloweditor.editarea;
+package com.paunoski.workfloweditor.editarea.events;
 
-import com.paunoski.workfloweditor.MyShape;
-import com.paunoski.workfloweditor.Place;
-import com.paunoski.workfloweditor.Transition;
+import com.paunoski.workfloweditor.editarea.elements.MyShape;
+import com.paunoski.workfloweditor.editarea.elements.Place;
+import com.paunoski.workfloweditor.editarea.elements.Transition;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
-import javafx.scene.Group;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
