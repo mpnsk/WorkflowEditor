@@ -1,12 +1,13 @@
 package com.paunoski.workfloweditor;
 
+import javafx.beans.property.DoubleProperty;
 import javafx.scene.input.MouseButton;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 
 import java.util.Set;
 
-public class Place extends Circle implements PlaceOrTransition {
+public class Place extends Circle implements PlaceOrTransition, MyShape {
     int tokens;
     Set<Transition> transitions;
 
@@ -43,4 +44,8 @@ public class Place extends Circle implements PlaceOrTransition {
         return line[0];
     }
 
+    @Override
+    public DoubleProperty heightProperty() {
+        return super.radiusProperty();
+    }
 }

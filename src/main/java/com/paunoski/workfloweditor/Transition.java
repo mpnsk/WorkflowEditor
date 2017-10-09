@@ -4,7 +4,7 @@ import javafx.scene.shape.Rectangle;
 
 import java.util.Set;
 
-public class Transition extends Rectangle implements PlaceOrTransition {
+public class Transition extends Rectangle implements PlaceOrTransition , MyShape{
     int tokens;
     Set<Place> places;
 
